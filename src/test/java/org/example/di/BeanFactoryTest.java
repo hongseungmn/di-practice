@@ -11,6 +11,7 @@ import java.lang.annotation.Annotation;
 import java.util.HashSet;
 import java.util.Set;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BeanFactoryTest {
@@ -35,6 +36,9 @@ class BeanFactoryTest {
 
     @Test
     void diTest() {
-        beanFactory.getBean(UserController.class);
+        UserController userController = beanFactory.getBean(UserController.class);
+
+        assertThat(userController).isNotNull();
+        assertThat(userController.getUserService()).isNotNull();
     }
 }
